@@ -327,5 +327,8 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Visual Effects (Furniture) | VFX_    | _F     |       |
 | Visual Effects (Levels)    | VFX_    | _L     |       |
 
+# WHY?
+These naming conventions can help with automation. The name can imply what import settings an asset gets, how it gets exported or who can add model behaviours. Remember to also change imported third party assets to these conventions.
+
 
 **[⬆ Back to Top](#table-of-contents)**
