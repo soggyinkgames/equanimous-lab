@@ -135,9 +135,9 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   bundleVersion: 1.1.1
   preloadedAssets:
-  - {fileID: -2946323715074033278, guid: cfe4167b9a3efeb4ba49bf2436222136, type: 2}
   - {fileID: 11400000, guid: ca3ac8fd65ca607429443b4877a1e7a3, type: 2}
-  - {fileID: -7051097558614941082, guid: e6ea15ae3cea10c46bd4f2b9e224efcb, type: 2}
+  - {fileID: 2263014767749366975, guid: e6ea15ae3cea10c46bd4f2b9e224efcb, type: 2}
+  - {fileID: -9149377493148029970, guid: cfe4167b9a3efeb4ba49bf2436222136, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -158,6 +158,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.SoggyInkGames.equanimouslab
+    Standalone: com.SoggyInkGames.equanimous-lab
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -737,6 +738,7 @@ PlayerSettings:
   platformArchitecture: {}
   scriptingBackend:
     Android: 1
+    Standalone: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:
@@ -757,7 +759,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 2
+  selectedPlatform: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
