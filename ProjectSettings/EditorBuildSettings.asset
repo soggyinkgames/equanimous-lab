@@ -8,10 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/ThirdParty/Samples/XR Interaction Toolkit/2.3.2/Hands Interaction
-      Demo/Runtime/HandsDemoScene.unity
-    guid: 3ff35cecbcc52cc42945cf531638a60a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ca3ac8fd65ca607429443b4877a1e7a3, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: cfe4167b9a3efeb4ba49bf2436222136, type: 2}
