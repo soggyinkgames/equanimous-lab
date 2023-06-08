@@ -278,6 +278,7 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Post Process Volume Profile     | PP_    |        |       |
 | User Interface                  | UI_    |        |       |
 | Lighting Setings Asset          | LI_    |        |       |
+| Texture Import Setings          | TI_    |        |       |
 
 
 <a name="anc-physics"></a>
