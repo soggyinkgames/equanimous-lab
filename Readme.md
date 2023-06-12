@@ -215,6 +215,7 @@ All meshes in 3ds Max are lowercase to differentiate them from their FBX export.
 | Render Target           | RT_       |            |                                  |
 | Cube Render Target      | RTC_     |            |                                  |
 | Texture Light Profile   | TLP_     |            |                                  |
+| Texture (Particle)      | T_       |   _P       |                                  |
 
 
 <a name="anc-textures-packing"></a>
