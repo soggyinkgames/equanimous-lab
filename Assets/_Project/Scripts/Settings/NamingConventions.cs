@@ -33,7 +33,7 @@ namespace SoggyInkGames.Equanimous.Lab.Settings
                             // Create the new file name
                             string newFileName = ApplyNamingConventions(fileName, fileExtension);
                             if(newFileName != fileName)
-                            {//todo: check this
+                            {//todo: should only add suffix if available
                                 string newFilePath = Path.Combine(Path.GetDirectoryName(file), $"{prefix}{fileName}{suffix}{fileExtension}");
 
                                 // Move the file to the new location
@@ -87,5 +87,4 @@ namespace SoggyInkGames.Equanimous.Lab.Settings
     }
 }
 // todo: add all prefixes for all files in assets that should have a prefix as stated in the readme
-// todo: invoke function when you open the editor if anything in mentioned folders has been updated
-// not onstart()
+// todo: run as separate class, add to editor guid, menubutton instead of on start
