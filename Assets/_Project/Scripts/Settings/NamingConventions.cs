@@ -9,7 +9,6 @@ namespace SoggyInkGames.Equanimous.Lab.Settings
         public string prefix;
         public string suffix;
         public string path;
-        public string assetType;
 
         public void Start()
         {
@@ -24,6 +23,8 @@ namespace SoggyInkGames.Equanimous.Lab.Settings
                     string currentFullName = Path.GetFileName(file);
                     string fileName = Path.GetFileNameWithoutExtension(file);
                     string fileExtension = Path.GetExtension(file);
+                    string fullPath = $"{path}/anyFile";
+                    string assetType = Path.GetFileName(Path.GetDirectoryName(fullPath));
 
 
                     if (!string.IsNullOrEmpty(Path.GetExtension(currentFullName)) && !currentFullName.EndsWith(".meta"))
@@ -31,8 +32,8 @@ namespace SoggyInkGames.Equanimous.Lab.Settings
                         if (!fileName.StartsWith(prefix) && !fileName.EndsWith(suffix))
                         {
                             // Create the new file name
-                            string newFileName = ApplyNamingConventions(fileName, fileExtension);
-                            if(newFileName != fileName)
+                            string newFileName = ApplyNamingConventions(fileName, fileExtension, assetType);
+                            if (newFileName != fileName)
                             {//todo: should only add suffix if available
                                 string newFilePath = Path.Combine(Path.GetDirectoryName(file), $"{prefix}{fileName}{suffix}{fileExtension}");
 
@@ -51,15 +52,14 @@ namespace SoggyInkGames.Equanimous.Lab.Settings
             }
         }
 
-        private string ApplyNamingConventions(string fileName, string fileExtension)
+        private string ApplyNamingConventions(string fileName, string fileExtension, string assetType)
         {
             // Apply the naming conventions based on the asset type
-            //todo: you should get the asset type from the path not the exposed var
             switch (assetType)
             {
-                case "Texture":
+                case "Textures":
                     return ApplyTextureNamingConventions(fileName);
-                case "Material":
+                case "Materials":
                     return ApplyMaterialNamingConventions(fileName);
                 // Add more cases for other asset types as needed
                 default:
