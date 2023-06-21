@@ -32,11 +32,6 @@ public class ExampleWindow : EditorWindow
     GameObject objectToSpawn;
 
 
-    // CURVEFIELD
-    AnimationCurve curveX = AnimationCurve.Linear(0, 0, 10, 10);
-    AnimationCurve curveY = AnimationCurve.Linear(0, 0, 10, 10);
-    AnimationCurve curveZ = AnimationCurve.Linear(0, 0, 10, 10);
-
 
     [MenuItem("MyTools/Example")]
     public static void ShowWindow()
