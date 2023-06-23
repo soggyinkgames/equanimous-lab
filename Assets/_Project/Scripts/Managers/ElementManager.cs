@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 // an example script to visualize some element data in the play manager inspector drawer  to edit the ui in ui builder
-namespace SoggyInkGames.Equanimous.Lab.Manager
+namespace SoggyInkGames.Equanimous.Lab.Managers
 {
     [Serializable]
     public class ElementManager
@@ -45,4 +45,5 @@ namespace SoggyInkGames.Equanimous.Lab.Manager
             m_Instance.SetActive (true);
         }
     }
+
 }

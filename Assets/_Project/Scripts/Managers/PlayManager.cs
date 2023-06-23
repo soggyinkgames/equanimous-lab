@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 // an example script to visualize some element data in the play manager inspector drawer to edit the ui in ui builder
-namespace SoggyInkGames.Equanimous.Lab.Manager
+namespace SoggyInkGames.Equanimous.Lab.Managers
 {
     [RequireComponent(typeof(UIDocument))]
     public class PlayManager : MonoBehaviour

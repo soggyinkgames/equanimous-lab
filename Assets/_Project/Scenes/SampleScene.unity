@@ -2368,15 +2368,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ElementPrefab: {fileID: 7192527800613753453, guid: 20d294ff1eef46644886a38748fe2433, type: 3}
   m_Elements:
-  - m_ElementColor: {r: 0.7830189, g: 0.2474635, b: 0.6394818, a: 0}
+  - m_ElementColor: {r: 0, g: 0, b: 0, a: 0}
     m_SpawnPoint: {fileID: 0}
     m_ElementNumber: 0
     m_Instance: {fileID: 0}
-  - m_ElementColor: {r: 0.5530322, g: 0.25485048, b: 0.7830189, a: 0}
-    m_SpawnPoint: {fileID: 0}
-    m_ElementNumber: 0
-    m_Instance: {fileID: 0}
-  - m_ElementColor: {r: 0.1782218, g: 0.24733776, b: 0.8396226, a: 0}
+  - m_ElementColor: {r: 0, g: 0, b: 0, a: 0}
     m_SpawnPoint: {fileID: 0}
     m_ElementNumber: 0
     m_Instance: {fileID: 0}
