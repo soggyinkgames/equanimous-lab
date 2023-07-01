@@ -15,5 +15,10 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
         public GameObject m_ElementPrefab;
 
         public ElementManager[] m_Elements;
+
+        // todo: implement the following in "Rename Assets" binding eg. m_PrefixType
+        //     var allTextureAssets = AssetDatabase.FindAssets("t:textures");
+        //     Debug.Log($"here are the texture assets {allTextureAssets}");
+
     }
 }
