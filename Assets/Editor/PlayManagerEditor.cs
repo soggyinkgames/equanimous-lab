@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using System.Collections.Generic;
+
 
 namespace SoggyInkGames.Equanimous.Lab.Managers
 {
@@ -15,7 +17,25 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
         public override VisualElement CreateInspectorGUI()
         {
             var root = new VisualElement();
-            m_UXML.CloneTree(root);
+            m_UXML.CloneTree(root); // instanciates visual elements
+
+            var choices = new List<string> { "Textures (T_)","Materials (M_)","Signed Distance Field (SDF_)","Visual Effects (VFX_)","Shader (SH_)","Shader Graph (SHG_)","Particle System (PS_)" };
+            var prefixField = root.Q<DropdownField>("prefix");
+            prefixField.choices = choices;
+            // prefixField.value = choices[0];
+
+            var sufixChoices = new List<string> { "_E", "_I", "_A", "_F" };
+            var sufixField = root.Q<DropdownField>("sufix");
+            sufixField.choices = sufixChoices;
+
+
+            prefixField.RegisterCallback<ChangeEvent<string>>((evt) =>
+            {
+                if(evt.newValue == choices[0]){
+                    sufixField.choices = new List<string> { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle"};
+                }
+            });
+
 
             // Draw the default inspectror
             var foldout = new Foldout() 
