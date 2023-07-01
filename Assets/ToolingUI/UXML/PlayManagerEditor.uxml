@@ -5,7 +5,7 @@
             <ui:Foldout text="Rename Asset">
                 <ui:DropdownField label="Prefix Type" name="prefix" index="-1" binding-path="m_PrefixType" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" />
                 <ui:DropdownField label="Suffix Type" name="suffix" index="-1" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" binding-path="m_SuffixType" />
-                <ui:TextField picking-mode="Ignore" label="Asset" value="filler text" binding-path="m_PrefixType" focusable="false" />
+                <uie:ObjectField label="Asset" />
                 <ui:Button text="Rename Asset" display-tooltip-when-elided="true" />
             </ui:Foldout>
         </ui:VisualElement>
