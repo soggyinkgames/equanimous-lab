@@ -4,7 +4,7 @@
         <ui:VisualElement name="rename-asset" class="section" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between; min-height: auto; max-height: 100px;">
             <ui:Foldout text="Rename Asset">
                 <ui:DropdownField label="Prefix Type" name="prefix" index="-1" binding-path="m_PrefixType" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" />
-                <ui:DropdownField label="Sufix Type" name="sufix" index="-1" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" binding-path="m_SuffixType" />
+                <ui:DropdownField label="Suffix Type" name="suffix" index="-1" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" binding-path="m_SuffixType" />
                 <ui:TextField picking-mode="Ignore" label="Asset" value="filler text" binding-path="m_PrefixType" focusable="false" />
                 <ui:Button text="Rename Asset" display-tooltip-when-elided="true" />
             </ui:Foldout>
@@ -14,7 +14,7 @@
         <ui:VisualElement name="rename-assets" class="section" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-height: 100px;">
             <ui:Foldout text="Rename ALL Assets" name="Foldout">
                 <ui:DropdownField label="Prefix Type" index="-1" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" binding-path="m_MyList" />
-                <ui:DropdownField label="Sufix Type" index="-1" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" binding-path="m_SuffixType" />
+                <ui:DropdownField label="Suffix Type" index="-1" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" binding-path="m_SuffixType" />
                 <ui:Button text="Rename ALL" display-tooltip-when-elided="true" />
             </ui:Foldout>
         </ui:VisualElement>

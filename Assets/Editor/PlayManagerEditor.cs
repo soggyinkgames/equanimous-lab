@@ -3,7 +3,6 @@ using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using System.Collections.Generic;
 
-
 namespace SoggyInkGames.Equanimous.Lab.Managers
 {
 // The #if true directive is a special case of the #if directive. It always evaluates to true, so the code inside the #if true block will always be compiled.
@@ -22,17 +21,16 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             var choices = new List<string> { "Textures (T_)","Materials (M_)","Signed Distance Field (SDF_)","Visual Effects (VFX_)","Shader (SH_)","Shader Graph (SHG_)","Particle System (PS_)" };
             var prefixField = root.Q<DropdownField>("prefix");
             prefixField.choices = choices;
-            // prefixField.value = choices[0];
 
-            var sufixChoices = new List<string> { "_E", "_I", "_A", "_F" };
-            var sufixField = root.Q<DropdownField>("sufix");
-            sufixField.choices = sufixChoices;
+            var suffixChoices = new List<string> { "_E", "_I", "_A", "_F" };
+            var suffixField = root.Q<DropdownField>("suffix");
+            suffixField.choices = suffixChoices;
 
 
             prefixField.RegisterCallback<ChangeEvent<string>>((evt) =>
             {
-                if(evt.newValue == choices[0]){
-                    sufixField.choices = new List<string> { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle"};
+                if(evt.newValue == choices[0] && prefixField != null){
+                    suffixField.choices = new List<string> { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle"};
                 }
             });
 
