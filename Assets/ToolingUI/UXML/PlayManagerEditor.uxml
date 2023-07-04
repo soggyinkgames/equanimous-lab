@@ -1,12 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
     <Style src="project://database/Assets/ToolingUI/USS/PlayManagerEditor.uss?fileID=7433441132597879392&amp;guid=d8657b5505dd324429652d206f28e6b7&amp;type=3#PlayManagerEditor" />
-    <ui:VisualElement name="pane" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-height: none;">
+    <ui:VisualElement name="pane" usage-hints="None" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); max-height: none;">
         <ui:VisualElement name="rename-asset" class="section" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between; min-height: auto; max-height: 100px;">
             <ui:Foldout text="Rename Asset">
                 <ui:DropdownField label="Prefix Type" name="prefix" index="-1" binding-path="m_PrefixType" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" />
                 <ui:DropdownField label="Suffix Type" name="suffix" index="-1" choices="Textures,Materials,SDF,Visual Effects,Shader,Shader Graph,Particle System" binding-path="m_SuffixType" />
-                <uie:ObjectField label="Asset" />
-                <ui:Button text="Rename Asset" display-tooltip-when-elided="true" />
+                <uie:ObjectField label="Asset" name="selected-asset" binding-path="m_SelectedAsset" />
+                <ui:Button text="Rename Asset" name="rename-asset" display-tooltip-when-elided="true" />
             </ui:Foldout>
         </ui:VisualElement>
     </ui:VisualElement>

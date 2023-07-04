@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,9 +17,46 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
         public ElementManager[] m_Elements;
 
-        // todo: implement the following in "Rename Assets" binding eg. m_PrefixType
-        //     var allTextureAssets = AssetDatabase.FindAssets("t:textures");
-        //     Debug.Log($"here are the texture assets {allTextureAssets}");
+        public Object m_SelectedAsset;
 
+        //TODO: RENAME DROPDOWN CHOICES
+        //TODO: ADD TOOLTIPS WITH FULL VALUE NAMES
+        //TODO: CHECK PREFIC MATCHES ASSET TYPE
+        //todo: add ability to rename multiple at same time
+
+
+        public void RenameAsset(string suffixValue, string newPrefix)
+        {
+            var currentAssetName = m_SelectedAsset.name;
+            var assetType = m_SelectedAsset.GetType();
+
+            Debug.Log($"INSIDE SELECTIONS ASsET newPrefix: {newPrefix} name:{currentAssetName} suffixValue: {suffixValue} type: {assetType}");
+
+            if (newPrefix == null || newPrefix == "none")
+            {
+                if (!string.IsNullOrEmpty(suffixValue) && suffixValue != "none")
+                {
+                    if (!currentAssetName.EndsWith(suffixValue))
+                    {
+                        string newName = $"{currentAssetName}{suffixValue}";
+                        Debug.Log($"NEW NAME SUFFIX ONLY{newName}");
+                    }
+                }
+            }
+
+            if (suffixValue == null || suffixValue == "none")
+            {
+                if (!string.IsNullOrEmpty(newPrefix) && newPrefix != "none")
+                {
+                    if (!currentAssetName.StartsWith(newPrefix))
+                    {
+                        string newName = $"{newPrefix}{currentAssetName}";
+                        Debug.Log($"NEW NAME PREFIX ONLY {newName}");
+                    }
+                }
+            }
+
+        }
     }
+
 }
