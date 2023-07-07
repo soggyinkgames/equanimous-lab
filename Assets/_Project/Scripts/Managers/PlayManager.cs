@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,46 +18,122 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
         public ElementManager[] m_Elements;
 
-        public Object m_SelectedAsset;
+        // public List<string> m_TexturePrefix = new() { "T_", "M_", "SDF_", "VFX_", "SH_", "SHG_", "PS_", "none" };
+        [HideInInspector] public Object m_SelectedAsset;
 
-        //TODO: RENAME DROPDOWN CHOICES
+        //todo: turn object into object array 
+        //todo: once conditions pass, replace dubugs with logic to rename assets using paths
+        //TODO: CHECK PREFIx MATCHES ASSET TYPE
+        //todo: add ability to rename multiple at same time/use list of objects instead
         //TODO: ADD TOOLTIPS WITH FULL VALUE NAMES
-        //TODO: CHECK PREFIC MATCHES ASSET TYPE
-        //todo: add ability to rename multiple at same time
+
+
+        static void AllPathsForType(string type)
+        {
+            var allPaths = AssetDatabase.FindAssets($"t: {type}");
+
+            foreach (var guid in allPaths)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                Debug.Log($"AllPathsForType ==>>{path}");
+            }
+
+        }
+
+        static void PathForSelected(string selected)
+        {
+
+            string[] selectedAssetGuids = AssetDatabase.FindAssets(selected);
+            if (selectedAssetGuids.Length == 0) return;
+
+            string selectedAssetPath = AssetDatabase.GUIDToAssetPath(selectedAssetGuids[0]);
+
+            Debug.Log($"PathForSelected----->>{selectedAssetPath}");
+
+        }
 
 
         public void RenameAsset(string suffixValue, string newPrefix)
         {
             var currentAssetName = m_SelectedAsset.name;
-            var assetType = m_SelectedAsset.GetType();
+            // var assetType = m_SelectedAsset.GetType();
 
-            Debug.Log($"INSIDE SELECTIONS ASsET newPrefix: {newPrefix} name:{currentAssetName} suffixValue: {suffixValue} type: {assetType}");
+            PathForSelected(currentAssetName);
 
-            if (newPrefix == null || newPrefix == "none")
-            {
-                if (!string.IsNullOrEmpty(suffixValue) && suffixValue != "none")
-                {
-                    if (!currentAssetName.EndsWith(suffixValue))
-                    {
-                        string newName = $"{currentAssetName}{suffixValue}";
-                        Debug.Log($"NEW NAME SUFFIX ONLY{newName}");
-                    }
-                }
-            }
 
-            if (suffixValue == null || suffixValue == "none")
-            {
-                if (!string.IsNullOrEmpty(newPrefix) && newPrefix != "none")
-                {
-                    if (!currentAssetName.StartsWith(newPrefix))
-                    {
-                        string newName = $"{newPrefix}{currentAssetName}";
-                        Debug.Log($"NEW NAME PREFIX ONLY {newName}");
-                    }
-                }
-            }
+            NothingSelected(currentAssetName, newPrefix, suffixValue);
+            RequiresPrefixAndSuffix(currentAssetName, newPrefix, suffixValue);
+            RequiresPrefixOnly(currentAssetName, newPrefix, suffixValue);
+            RequiresSuffixOnly(currentAssetName, newPrefix, suffixValue);
 
         }
-    }
 
+        private string NothingSelected(string currentAssetName, string newPrefix, string suffixValue)
+        {
+            if((newPrefix == "none" && suffixValue == "none") || (string.IsNullOrEmpty(newPrefix) && string.IsNullOrEmpty(suffixValue)))
+            {
+                Debug.Log("Please select a prefix or suffix or both to rename asset YOU SILLY BITCH!");
+            }
+            return currentAssetName;
+        }
+        
+        private string RequiresPrefixAndSuffix(string currentAssetName, string newPrefix, string suffixValue)
+        {
+            if (newPrefix != "none" && suffixValue != "none")
+            {
+                if (!currentAssetName.StartsWith(newPrefix) && !currentAssetName.EndsWith(suffixValue))
+                {
+                    AddPrefixAndSuffix(currentAssetName, newPrefix, suffixValue);
+                }
+                return currentAssetName;
+            }
+            return currentAssetName;
+        }
+
+        private string RequiresPrefixOnly(string currentAssetName, string newPrefix, string suffixValue)
+        {
+            if (!string.IsNullOrEmpty(newPrefix) && newPrefix != "none")
+            {
+                if ((!currentAssetName.StartsWith(newPrefix) && currentAssetName.EndsWith(suffixValue)) || suffixValue == "none")//add second check
+                {
+                    AddPrefix(newPrefix, currentAssetName);
+                }
+                return currentAssetName;
+            }
+            return currentAssetName;
+        }
+
+        private string RequiresSuffixOnly(string currentAssetName, string newPrefix, string suffixValue)
+        {
+            if (!string.IsNullOrEmpty(suffixValue) && suffixValue != "none")
+            {
+                if ((currentAssetName.StartsWith(newPrefix) && !currentAssetName.EndsWith(suffixValue)) || newPrefix == "none")
+                {
+                    AddSuffix(suffixValue, currentAssetName);
+                }
+                return currentAssetName;
+            }
+            return currentAssetName;
+        }
+
+
+        private string AddPrefixAndSuffix(string currentAssetName, string newPrefix, string suffixValue)
+        {
+            Debug.Log($"ADDED BOTH{string.Concat(newPrefix, currentAssetName, suffixValue)}");
+            return string.Concat(newPrefix, currentAssetName, suffixValue);
+        }
+
+        private string AddPrefix(string newPrefix, string currentAssetName)
+        {
+            Debug.Log($"ADDED PREFIX ONLY-{string.Concat(newPrefix, currentAssetName)}");
+            return string.Concat(newPrefix, currentAssetName);
+        }
+
+        private string AddSuffix(string suffixValue, string currentAssetName)
+        {
+            Debug.Log($"ADDED SUFFIX ONLY-{string.Concat(currentAssetName, suffixValue)}");
+            return string.Concat(currentAssetName, suffixValue);
+        }
+
+    }
 }
