@@ -1,9 +1,7 @@
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using Button = UnityEngine.UIElements.Button;
 
 namespace SoggyInkGames.Equanimous.Lab.Managers
@@ -18,10 +16,16 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
         public PlayManager m_PlayManager;
         public override VisualElement CreateInspectorGUI()
         {
+            // Get a reference to the PlayManager object.
+            m_PlayManager = target as PlayManager;
+
             var root = new VisualElement();
+
             m_UXML.CloneTree(root); // instanciates visual elements
 
-            var choices = new List<string> { "Textures (T_)", "Materials (M_)", "Signed Distance Field (SDF_)", "Visual Effects (VFX_)", "Shader (SH_)", "Shader Graph (SHG_)", "Particle System (PS_)", "none" };
+            // var choices = m_PlayManager.m_TexturePrefix;
+            var choices = new List<string> { "T_", "M_", "SDF_", "VFX_", "SH_", "SHG_", "PS_", "none" };
+
             var prefixField = root.Q<DropdownField>("prefix");
             prefixField.choices = choices;
 
@@ -31,21 +35,20 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
             var uxmlButton = root.Q<Button>("rename-asset");
 
-
-            // Get a reference to the PlayManager object.
-            m_PlayManager = target as PlayManager;
-
-
             prefixField.RegisterCallback<ChangeEvent<string>>((evt) =>
             {
                 if (evt.newValue == choices[0] && prefixField != null)
                 {
-                    suffixField.choices = new List<string> { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle" };
+                    suffixField.choices = new List<string> { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle","none" };
+                }
+                else if (evt.newValue != choices[0])
+                {
+                    suffixField.choices = suffixChoices;
                 }
             });
 
 
-            uxmlButton.RegisterCallback<MouseUpEvent>((evt) => 
+            uxmlButton.RegisterCallback<MouseUpEvent>((evt) =>
             {
                 string newSuffix = suffixField.value;
                 string newPrefix = prefixField.value;
