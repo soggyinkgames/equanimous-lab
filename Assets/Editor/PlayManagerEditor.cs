@@ -29,7 +29,7 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             var prefixField = root.Q<DropdownField>("prefix");
             prefixField.choices = choices;
 
-            var suffixChoices = new List<string> { "_E", "_I", "_A", "_F", "none" };
+            var suffixChoices = m_PlayManager.m_SuffixChoices;
             var suffixField = root.Q<DropdownField>("suffix");
             suffixField.choices = suffixChoices;
 
@@ -39,7 +39,7 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             {
                 if (evt.newValue == choices[0] && prefixField != null)
                 {
-                    suffixField.choices = new List<string> { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle","none" };
+                    suffixField.choices = m_PlayManager.m_TextureSuffixChoices;
                 }
                 else if (evt.newValue != choices[0])
                 {

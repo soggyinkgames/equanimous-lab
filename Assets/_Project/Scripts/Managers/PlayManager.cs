@@ -20,6 +20,8 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
         // public ElementManager[] m_Elements;
 
         [HideInInspector] public List<string> m_Prefix = new() { "T_", "M_", "SDF_", "VFX_", "SH_", "SHG_", "PS_", "TER_", "MESH_", "none" };
+        public List<string> m_SuffixChoices = new() { "_E", "_I", "_A", "_F", "none" };
+        [HideInInspector] public List<string> m_TextureSuffixChoices = new() { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle","none" };
         [HideInInspector] public Object m_SelectedAsset;
         // [HideInInspector] public Object[] m_SelectedAssets;
 
