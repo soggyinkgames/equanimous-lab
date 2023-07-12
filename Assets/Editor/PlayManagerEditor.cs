@@ -23,8 +23,8 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
             m_UXML.CloneTree(root); // instanciates visual elements
 
-            // var choices = m_PlayManager.m_TexturePrefix;
-            var choices = new List<string> { "T_", "M_", "SDF_", "VFX_", "SH_", "SHG_", "PS_", "none" };
+            var choices = m_PlayManager.m_Prefix;
+            // var choices = new List<string> { "T_", "M_", "SDF_", "VFX_", "SH_", "SHG_", "PS_", "TER_", "MESH_", "none" };
 
             var prefixField = root.Q<DropdownField>("prefix");
             prefixField.choices = choices;
