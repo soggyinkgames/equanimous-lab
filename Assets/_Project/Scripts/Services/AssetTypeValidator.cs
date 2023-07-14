@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace SoggyInkGames.Equanimous.Lab.Services
 {
-        public class AssetTypeValidator
-        {
-            private readonly Dictionary<string, string> _validPrefixes = new()
+    public class AssetTypeValidator
+    {
+        private readonly Dictionary<string, string> _validPrefixes = new()
             {
                 {"UnityEngine.Texture2D", "T_"},
                 {"UnityEngine.Material", "M_"},
@@ -18,23 +18,23 @@ namespace SoggyInkGames.Equanimous.Lab.Services
                 {"UnityEngine.Mesh", "MESH_"},
             };
 
-            private readonly Dictionary<string, string> _validPrefixesFromExtension = new()
+        private readonly Dictionary<string, string> _validPrefixesFromExtension = new()
             {
                 {".shadergraph", "SHG_"},
             };
-            public string GetValidPrefix(object assetType, string extension)
+        public string GetValidPrefix(object assetType, string extension)
+        {
+            if (extension == ".shadergraph")
             {
-                if (extension == ".shadergraph")
-                {
-                    var assetExtensionString = extension;
-                    return _validPrefixesFromExtension.GetValueOrDefault(assetExtensionString, "");
-                }
-                else if (extension != ".shadergraph")
-                {
-                    var assetTypeStr = assetType.GetType().ToString();
-                    return _validPrefixes.GetValueOrDefault(assetTypeStr, "");
-                }
-                else return null;
+                var assetExtensionString = extension;
+                return _validPrefixesFromExtension.GetValueOrDefault(assetExtensionString, "");
             }
+            else if (extension != ".shadergraph")
+            {
+                var assetTypeStr = assetType.GetType().ToString();
+                return _validPrefixes.GetValueOrDefault(assetTypeStr, "");
+            }
+            else return null;
         }
+    }
 }
