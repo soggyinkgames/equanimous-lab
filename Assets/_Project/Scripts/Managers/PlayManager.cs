@@ -26,7 +26,6 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
         // [HideInInspector] public Object[] m_SelectedAssets;
 
         // TODO: use validation to style uss error ui
-        // TODO: add suffix validation on textures or other
         //todo: add ability to rename multiple at same time/use list of objects instead
         //todo: replace dubugs with logic to rename assets using paths
         //TODO: ADD TOOLTIPS WITH FULL VALUE NAMES
@@ -69,6 +68,20 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             return validatedPrefix;
         }
 
+        private static string ValidateSelectedSuffix(List <string> m_SuffixChoices, List <string> m_TextureSuffixChoices, string suffixValue, string validatedPrefix)
+        {
+            var suffixChoicesValidator = new Services.AssetTypeValidator();
+
+            var validatedSuffix = suffixChoicesValidator.GetValidSuffix(m_SuffixChoices, m_TextureSuffixChoices, suffixValue, validatedPrefix);
+            if (suffixValue != validatedSuffix)
+            {
+                Debug.LogError($"SUFFIX SELECTED-{suffixValue}DOES NOT MATCH ASSET TYPE SUFFIX choices-{validatedSuffix}!! TRY AGAIN");
+                return null;
+            }
+            return validatedSuffix;
+
+        }
+
 
         string RemoveFolderPrefixInAssetName(string currentAssetName)
         {
@@ -92,44 +105,45 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             Debug.Log($"----- fileExtension-----> {_extension}");
 
             string validatedPrefix = ValidateSelectedAssetType(m_SelectedAsset, newPrefix, _extension);
+            string validatedSuffix = ValidateSelectedSuffix(m_SuffixChoices,m_TextureSuffixChoices, suffixValue, validatedPrefix);
 
-            NothingSelected(assetNameAlone, validatedPrefix, suffixValue);
-            RequiresPrefixAndSuffix(assetNameAlone, validatedPrefix, suffixValue);
-            RequiresPrefixOnly(assetNameAlone, validatedPrefix, suffixValue);
-            RequiresSuffixOnly(assetNameAlone, validatedPrefix, suffixValue);
+            NothingSelected(assetNameAlone, validatedPrefix, validatedSuffix);
+            RequiresPrefixAndSuffix(assetNameAlone, validatedPrefix, validatedSuffix);
+            RequiresPrefixOnly(assetNameAlone, validatedPrefix, validatedSuffix);
+            RequiresSuffixOnly(assetNameAlone, validatedPrefix, validatedSuffix);
         }
 
-        private string NothingSelected(string assetNameAlone, string validatedPrefix, string suffixValue)
+        private string NothingSelected(string assetNameAlone, string validatedPrefix, string validatedSuffix)
         {
-            if ((validatedPrefix == "none" && suffixValue == "none") || (string.IsNullOrEmpty(validatedPrefix) && string.IsNullOrEmpty(suffixValue)))
+            if ((validatedPrefix == "none" && validatedSuffix == "none") || (string.IsNullOrEmpty(validatedPrefix) && string.IsNullOrEmpty(validatedSuffix)))
             {
                 Debug.Log("Please select a prefix or suffix or both to rename asset YOU SILLY BITCH!");
             }
             return assetNameAlone;
         }
 
-        private string RequiresPrefixAndSuffix(string assetNameAlone, string validatedPrefix, string suffixValue)
+        private string RequiresPrefixAndSuffix(string assetNameAlone, string validatedPrefix, string validatedSuffix)
         {
-            if (validatedPrefix != "none" && suffixValue != "none")
+            if (validatedPrefix != "none" && validatedSuffix != "none")
             {
-                if (!assetNameAlone.StartsWith(validatedPrefix) && !assetNameAlone.EndsWith(suffixValue))
+                if (!assetNameAlone.StartsWith(validatedPrefix) && !assetNameAlone.EndsWith(validatedSuffix))
                 {
-                    AddPrefixAndSuffix(assetNameAlone, validatedPrefix, suffixValue);
+                    AddPrefixAndSuffix(assetNameAlone, validatedPrefix, validatedSuffix);
                 }
                 return assetNameAlone;
             }
             return assetNameAlone;
         }
 
-        private string RequiresPrefixOnly(string assetNameAlone, string validatedPrefix, string suffixValue)
+        private string RequiresPrefixOnly(string assetNameAlone, string validatedPrefix, string validatedSuffix)
         {
-            if (!string.IsNullOrEmpty(validatedPrefix) && suffixValue == "none")
+            if (!string.IsNullOrEmpty(validatedPrefix) && validatedSuffix == "none")
             {
-                if (!assetNameAlone.StartsWith(validatedPrefix) && (assetNameAlone.EndsWith(suffixValue) || suffixValue == "none"))
+                if (!assetNameAlone.StartsWith(validatedPrefix) && (assetNameAlone.EndsWith(validatedSuffix) || validatedSuffix == "none"))
                 {
                     AddPrefix(validatedPrefix, assetNameAlone);
                 }
-                if(suffixValue == "none" && assetNameAlone.StartsWith(validatedPrefix))
+                if(validatedSuffix == "none" && assetNameAlone.StartsWith(validatedPrefix))
                 {
                     Debug.Log($"ALREADY PREFIXED DO NOTHING {assetNameAlone}");
                     return assetNameAlone;
@@ -138,13 +152,13 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             return assetNameAlone;
         }
 
-        private string RequiresSuffixOnly(string assetNameAlone, string validatedPrefix, string suffixValue)
+        private string RequiresSuffixOnly(string assetNameAlone, string validatedPrefix, string validatedSuffix)
         {
-            if (!string.IsNullOrEmpty(suffixValue) && suffixValue != "none")
+            if (!string.IsNullOrEmpty(validatedSuffix) && validatedSuffix != "none")
             {
-                if ((assetNameAlone.StartsWith(validatedPrefix) && !assetNameAlone.EndsWith(suffixValue)) || validatedPrefix == "none")
+                if ((assetNameAlone.StartsWith(validatedPrefix) && !assetNameAlone.EndsWith(validatedSuffix)) || validatedPrefix == "none")
                 {
-                    AddSuffix(suffixValue, assetNameAlone);
+                    AddSuffix(validatedSuffix, assetNameAlone);
                 }
                 return assetNameAlone;
             }
@@ -152,10 +166,10 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
         }
 
 
-        private string AddPrefixAndSuffix(string assetNameAlone, string validatedPrefix, string suffixValue)
+        private string AddPrefixAndSuffix(string assetNameAlone, string validatedPrefix, string validatedSuffix)
         {
-            Debug.Log($"ADDED BOTH{string.Concat(validatedPrefix, assetNameAlone, suffixValue)}");
-            return string.Concat(validatedPrefix, assetNameAlone, suffixValue);
+            Debug.Log($"ADDED BOTH{string.Concat(validatedPrefix, assetNameAlone, validatedSuffix)}");
+            return string.Concat(validatedPrefix, assetNameAlone, validatedSuffix);
         }
 
         private string AddPrefix(string newPrefix, string assetNameAlone)
@@ -164,10 +178,10 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             return string.Concat(newPrefix, assetNameAlone);
         }
 
-        private string AddSuffix(string suffixValue, string assetNameAlone)
+        private string AddSuffix(string validatedSuffix, string assetNameAlone)
         {
-            Debug.Log($"ADDED SUFFIX ONLY-{string.Concat(assetNameAlone, suffixValue)}");
-            return string.Concat(assetNameAlone, suffixValue);
+            Debug.Log($"ADDED SUFFIX ONLY-{string.Concat(assetNameAlone, validatedSuffix)}");
+            return string.Concat(assetNameAlone, validatedSuffix);
         }
 
     }

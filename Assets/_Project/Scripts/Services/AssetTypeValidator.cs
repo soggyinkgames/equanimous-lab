@@ -36,5 +36,20 @@ namespace SoggyInkGames.Equanimous.Lab.Services
             }
             else return null;
         }
+
+        public string GetValidSuffix(List<string> m_SuffixChoices, List<string> m_TextureSuffixChoices, string suffixValue, string validatedPrefix)
+        {
+            if (validatedPrefix == "T_" && m_TextureSuffixChoices.Contains(suffixValue))
+            {
+                string validSuffix = suffixValue;
+                return validSuffix;
+            }
+            else if (validatedPrefix != "T_" && m_SuffixChoices.Contains(suffixValue))
+            {
+                string validSuffix = suffixValue;
+                return validSuffix;
+            }
+            else return null;
+        }
     }
 }
