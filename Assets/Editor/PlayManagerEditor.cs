@@ -1,8 +1,8 @@
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-using System.Collections.Generic;
 using Button = UnityEngine.UIElements.Button;
+
 
 namespace SoggyInkGames.Equanimous.Lab.Managers
 {
@@ -24,7 +24,6 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             m_UXML.CloneTree(root); // instanciates visual elements
 
             var choices = m_PlayManager.m_Prefix;
-            // var choices = new List<string> { "T_", "M_", "SDF_", "VFX_", "SH_", "SHG_", "PS_", "TER_", "MESH_", "none" };
 
             var prefixField = root.Q<DropdownField>("prefix");
             prefixField.choices = choices;
@@ -32,6 +31,8 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             var suffixChoices = m_PlayManager.m_SuffixChoices;
             var suffixField = root.Q<DropdownField>("suffix");
             suffixField.choices = suffixChoices;
+            suffixField.value = choices[0];
+
 
             var uxmlButton = root.Q<Button>("rename-asset");
 

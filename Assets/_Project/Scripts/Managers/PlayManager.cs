@@ -62,7 +62,7 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             var validatedPrefix = assetTypeValidator.GetValidPrefix(m_SelectedAsset, extension);
             if (newPrefix != validatedPrefix)
             {
-                Debug.LogError($"PREFIX SELECTED-{newPrefix}DOES NOT MATCH ASSET TYPE-{validatedPrefix}!! TRY AGAIN");
+                Debug.LogError($"PREFIX SELECTED-`{newPrefix}` IS NOT A VALID SUFFIX TYPE CHOICE FOR THE SELECTED ASSET-!! TRY AGAIN");
                 return null;
             }
             return validatedPrefix;
@@ -75,7 +75,7 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             var validatedSuffix = suffixChoicesValidator.GetValidSuffix(m_SuffixChoices, m_TextureSuffixChoices, suffixValue, validatedPrefix);
             if (suffixValue != validatedSuffix)
             {
-                Debug.LogError($"SUFFIX SELECTED-{suffixValue}DOES NOT MATCH ASSET TYPE SUFFIX choices-{validatedSuffix}!! TRY AGAIN");
+                Debug.LogError($"SUFFIX SELECTED-`{suffixValue}` IS NOT A VALID SUFFIX TYPE CHOICE FOR THE SELECTED ASSET!! TRY AGAIN");
                 return null;
             }
             return validatedSuffix;
