@@ -10,6 +10,7 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
     [RequireComponent(typeof(UIDocument))]
     public class PlayManager : MonoBehaviour
     {
+
         // [Header("This is a Header")]
         // public float m_ElementRandomRange = 20;
         // [Range(10, 40)] public float m_ElementForce = 25;
@@ -19,16 +20,18 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
         // public ElementManager[] m_Elements;
 
+
         [HideInInspector] public List<string> m_Prefix = new() { "T_", "M_", "SDF_", "VFX_", "SH_", "SHG_", "PS_", "TER_", "MESH_", "none" };
         public List<string> m_SuffixChoices = new() { "_E", "_I", "_A", "_F", "none" };
-        [HideInInspector] public List<string> m_TextureSuffixChoices = new() { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle", "none" };
+        [HideInInspector] public List<string> textureSuffixChoices = new() { "_D", "_Normal", "_Roughness", "_AlphaOpacity", "_AmbientOcclusion", "_Bump", "_Emissive", "_Mask", "_Specular", "_Particle", "none" };
+        [HideInInspector] public static List<string> styleList;
         [HideInInspector] public Object m_SelectedAsset;
+
         // [HideInInspector] public Object[] m_SelectedAssets;
 
-        // TODO: use validation to style uss error ui
-        //todo: add ability to rename multiple at same time/use list of objects instead
+        // todo: add tests
         //todo: replace dubugs with logic to rename assets using paths
-        //TODO: ADD TOOLTIPS WITH FULL VALUE NAMES
+        //todo: add ability to rename multiple at same time/use list of objects instead
 
 
         static void AllPathsForType(string type)
@@ -37,8 +40,8 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
             foreach (var guid in allPaths)
             {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                Debug.Log($"AllPathsForType ==>>{path}");
+                AssetDatabase.GUIDToAssetPath(guid);
+                // Debug.Log($"AllPathsForType ==>>{path}");
             }
 
         }
@@ -51,11 +54,10 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
             string selectedAssetPath = AssetDatabase.GUIDToAssetPath(selectedAssetGuids[0]);
 
-            Debug.Log($"PathForSelected----->>{selectedAssetPath}");
             return selectedAssetPath;
         }
 
-        private static string ValidateSelectedAssetType(object m_SelectedAsset, string newPrefix, string extension)
+        private string ValidateSelectedAssetType(object m_SelectedAsset, string newPrefix, string extension)
         {
             var assetTypeValidator = new Services.AssetTypeValidator();
 
@@ -68,7 +70,8 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             return validatedPrefix;
         }
 
-        private static string ValidateSelectedSuffix(List <string> m_SuffixChoices, List <string> m_TextureSuffixChoices, string suffixValue, string validatedPrefix)
+
+        private string ValidateSelectedSuffix(List<string> m_SuffixChoices, List<string> m_TextureSuffixChoices, string suffixValue, string validatedPrefix)
         {
             var suffixChoicesValidator = new Services.AssetTypeValidator();
 
@@ -79,7 +82,6 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
                 return null;
             }
             return validatedSuffix;
-
         }
 
 
@@ -102,15 +104,14 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
 
             string file = PathForSelected(assetNameAlone);
             var _extension = Path.GetExtension(file);
-            Debug.Log($"----- fileExtension-----> {_extension}");
 
             string validatedPrefix = ValidateSelectedAssetType(m_SelectedAsset, newPrefix, _extension);
-            string validatedSuffix = ValidateSelectedSuffix(m_SuffixChoices,m_TextureSuffixChoices, suffixValue, validatedPrefix);
+            string validatedSuffix = ValidateSelectedSuffix(m_SuffixChoices, textureSuffixChoices, suffixValue, validatedPrefix);
 
             NothingSelected(assetNameAlone, validatedPrefix, validatedSuffix);
-            RequiresPrefixAndSuffix(assetNameAlone, validatedPrefix, validatedSuffix);
-            RequiresPrefixOnly(assetNameAlone, validatedPrefix, validatedSuffix);
-            RequiresSuffixOnly(assetNameAlone, validatedPrefix, validatedSuffix);
+            RequiresPrefixAndSuffix(file, assetNameAlone, validatedPrefix, validatedSuffix, _extension);
+            RequiresPrefixOnly(file, assetNameAlone, validatedPrefix, validatedSuffix, _extension);
+            RequiresSuffixOnly(file, assetNameAlone, validatedPrefix, validatedSuffix, _extension);
         }
 
         private string NothingSelected(string assetNameAlone, string validatedPrefix, string validatedSuffix)
@@ -122,43 +123,44 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             return assetNameAlone;
         }
 
-        private string RequiresPrefixAndSuffix(string assetNameAlone, string validatedPrefix, string validatedSuffix)
+        private string RequiresPrefixAndSuffix(string file, string assetNameAlone, string validatedPrefix, string validatedSuffix, string _extension)
         {
             if (validatedPrefix != "none" && validatedSuffix != "none")
             {
                 if (!assetNameAlone.StartsWith(validatedPrefix) && !assetNameAlone.EndsWith(validatedSuffix))
                 {
-                    AddPrefixAndSuffix(assetNameAlone, validatedPrefix, validatedSuffix);
+                    AddPrefixAndSuffix(file, assetNameAlone, validatedPrefix, validatedSuffix, _extension);
                 }
                 return assetNameAlone;
             }
             return assetNameAlone;
         }
 
-        private string RequiresPrefixOnly(string assetNameAlone, string validatedPrefix, string validatedSuffix)
+        private string RequiresPrefixOnly(string file, string assetNameAlone, string validatedPrefix, string validatedSuffix, string _extension)
         {
             if (!string.IsNullOrEmpty(validatedPrefix) && validatedSuffix == "none")
             {
                 if (!assetNameAlone.StartsWith(validatedPrefix) && (assetNameAlone.EndsWith(validatedSuffix) || validatedSuffix == "none"))
                 {
-                    AddPrefix(validatedPrefix, assetNameAlone);
+                    AddPrefix(file, validatedPrefix, assetNameAlone, _extension);
                 }
-                if(validatedSuffix == "none" && assetNameAlone.StartsWith(validatedPrefix))
+                if (validatedSuffix == "none" && assetNameAlone.StartsWith(validatedPrefix))
                 {
-                    Debug.Log($"ALREADY PREFIXED DO NOTHING {assetNameAlone}");
+                    Debug.Log($"REMOVE SUFFIX {assetNameAlone}");
+                    // fix here
                     return assetNameAlone;
                 }
             }
             return assetNameAlone;
         }
 
-        private string RequiresSuffixOnly(string assetNameAlone, string validatedPrefix, string validatedSuffix)
+        private string RequiresSuffixOnly(string file, string assetNameAlone, string validatedPrefix, string validatedSuffix, string _extension)
         {
             if (!string.IsNullOrEmpty(validatedSuffix) && validatedSuffix != "none")
             {
                 if ((assetNameAlone.StartsWith(validatedPrefix) && !assetNameAlone.EndsWith(validatedSuffix)) || validatedPrefix == "none")
                 {
-                    AddSuffix(validatedSuffix, assetNameAlone);
+                    AddSuffix(file, validatedSuffix, assetNameAlone, _extension);
                 }
                 return assetNameAlone;
             }
@@ -166,22 +168,35 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
         }
 
 
-        private string AddPrefixAndSuffix(string assetNameAlone, string validatedPrefix, string validatedSuffix)
+        private void AddPrefixAndSuffix(string file, string assetNameAlone, string validatedPrefix, string validatedSuffix, string _extension)
         {
-            Debug.Log($"ADDED BOTH{string.Concat(validatedPrefix, assetNameAlone, validatedSuffix)}");
-            return string.Concat(validatedPrefix, assetNameAlone, validatedSuffix);
+            string newFilePath = Path.Combine(Path.GetDirectoryName(file), $"{validatedPrefix}{assetNameAlone}{validatedSuffix}{_extension}");
+            Debug.Log($"ADDED BOTH-{newFilePath}");
+            Renamed(file, newFilePath);
+            AssetDatabase.Refresh();
         }
 
-        private string AddPrefix(string newPrefix, string assetNameAlone)
+        private void AddPrefix(string file, string newPrefix, string assetNameAlone, string _extension)
         {
-            Debug.Log($"ADDED PREFIX ONLY-{string.Concat(newPrefix, assetNameAlone)}");
-            return string.Concat(newPrefix, assetNameAlone);
+            string newFilePath = Path.Combine(Path.GetDirectoryName(file), $"{newPrefix}{assetNameAlone}{_extension}");
+            Debug.Log($"ADDED PREFIX ONLY-{newFilePath}");
+            Renamed(file, newFilePath);
+            AssetDatabase.Refresh();
         }
 
-        private string AddSuffix(string validatedSuffix, string assetNameAlone)
+        private void AddSuffix(string file, string validatedSuffix, string assetNameAlone, string _extension)
         {
-            Debug.Log($"ADDED SUFFIX ONLY-{string.Concat(assetNameAlone, validatedSuffix)}");
-            return string.Concat(assetNameAlone, validatedSuffix);
+            string newFilePath = Path.Combine(Path.GetDirectoryName(file), $"{assetNameAlone}{validatedSuffix}{_extension}");
+            Debug.Log($"ADDED SUFFIX ONLY-{newFilePath}");
+            Renamed(file, newFilePath);
+            AssetDatabase.Refresh();
+        }
+
+        private static void Renamed(string file, string newFilePath)
+        {
+            File.Move(file, newFilePath);
+            AssetDatabase.Refresh();
+            Debug.Log("Asset renaming complete.");
         }
 
     }

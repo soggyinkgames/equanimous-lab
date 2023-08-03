@@ -3,7 +3,6 @@ using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using Button = UnityEngine.UIElements.Button;
 
-
 namespace SoggyInkGames.Equanimous.Lab.Managers
 {
     // The #if true directive is a special case of the #if directive. It always evaluates to true, so the code inside the #if true block will always be compiled.
@@ -14,6 +13,8 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
     {
         public VisualTreeAsset m_UXML;
         public PlayManager m_PlayManager;
+
+
         public override VisualElement CreateInspectorGUI()
         {
             // Get a reference to the PlayManager object.
@@ -24,23 +25,21 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             m_UXML.CloneTree(root); // instanciates visual elements
 
             var choices = m_PlayManager.m_Prefix;
-
             var prefixField = root.Q<DropdownField>("prefix");
             prefixField.choices = choices;
 
             var suffixChoices = m_PlayManager.m_SuffixChoices;
             var suffixField = root.Q<DropdownField>("suffix");
             suffixField.choices = suffixChoices;
-            suffixField.value = choices[0];
-
 
             var uxmlButton = root.Q<Button>("rename-asset");
+
 
             prefixField.RegisterCallback<ChangeEvent<string>>((evt) =>
             {
                 if (evt.newValue == choices[0] && prefixField != null)
                 {
-                    suffixField.choices = m_PlayManager.m_TextureSuffixChoices;
+                    suffixField.choices = m_PlayManager.textureSuffixChoices;
                 }
                 else if (evt.newValue != choices[0])
                 {
@@ -48,11 +47,11 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
                 }
             });
 
-
             uxmlButton.RegisterCallback<MouseUpEvent>((evt) =>
             {
                 string newSuffix = suffixField.value;
                 string newPrefix = prefixField.value;
+
                 m_PlayManager.RenameAsset(newSuffix, newPrefix);
             });
 
@@ -67,7 +66,6 @@ namespace SoggyInkGames.Equanimous.Lab.Managers
             root.Add(foldout);
             return root;
         }
-
     }
 
 #endif
