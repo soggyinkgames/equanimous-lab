@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="equanimous-lab_WwiseProject" GUID="{7F9080CA-A5AA-4F1E-9CDB-A875B58FCDE2}" Generator="2022.1.7.8290"/>
+	<CacheRoot>../../../../equanimous-lab_WwiseProject/.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Android" GUID="{EC52602B-014D-46D4-B9CD-B2374A82DC69}" BasePlatform="Android" BasePlatformGUID="{A2D401DE-B8B6-4FEB-8142-137C34D507CA}" Path="../../../../equanimous-lab_WwiseProject/GeneratedSoundBanks/Android"/>
+		<Platform Name="Mac" GUID="{25E32A01-3EB2-4FF8-9AF4-41334CB01DC7}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../equanimous-lab_WwiseProject/GeneratedSoundBanks/Mac"/>
+		<Platform Name="Windows" GUID="{161B0EE2-A02F-46CD-BF4A-36A70A112D5F}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../equanimous-lab_WwiseProject/GeneratedSoundBanks/Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{F6A02323-EB76-4B64-B54F-D4655C289E8D}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{7EA8E614-68AB-00D9-BE55-6AAD2C9A6403}</FileHash>
+</ProjectInfo>

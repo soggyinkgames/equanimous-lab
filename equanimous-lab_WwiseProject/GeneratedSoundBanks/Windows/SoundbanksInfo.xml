@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{986487A9-2683-E47A-8688-3D0FE6FDB954}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="1524985329" Type="User" Language="SFX" Hash="{90ABF439-26CB-96F7-5921-4FC5D876B05E}">
+			<ShortName>geirangerfjord_atmosphere</ShortName>
+			<Path>geirangerfjord_atmosphere.bnk</Path>
+			<Media>
+				<File Id="850695978" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance.wav</ShortName>
+					<CachePath>SFX/draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2646386776" Name="Play_draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" DurationType="OneShot" DurationMin="185.57733" DurationMax="185.57733">
+					<MediaRefs>
+						<MediaRef Id="850695978"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{8B2427B0-A84D-8BE0-9D65-378DB148EEAE}</FileHash>
+</SoundBanksInfo>
