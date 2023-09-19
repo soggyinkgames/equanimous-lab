@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{C76C93DA-B994-4F5E-8E05-109AB823734B}" SchemaVersion="110">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{C76C93DA-B994-4F5E-8E05-109AB823734B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{C76C93DA-B994-4F5E-8E05-109AB823734B}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" ID="{B87F8E59-4636-40A0-BD35-311188797C42}">
+					<ChildrenList>
+						<Action Name="" ID="{21ED4F35-6831-4EA0-9B43-5E7B97A9723B}" ShortID="291483413">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" ID="{5F51CE45-4311-49DB-AF60-0B3FD423B8D9}" WorkUnitID="{52222402-6660-4581-A49F-7C0D8E12EBE7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

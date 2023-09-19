@@ -19,7 +19,7 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
-        static const AkUniqueID GEIRANGERFJORD_ATMOSPHERE = 1524985329U;
+        static const AkUniqueID ATMOSPHERE = 2145253833U;
     } // namespace BANKS
 
     namespace BUSSES

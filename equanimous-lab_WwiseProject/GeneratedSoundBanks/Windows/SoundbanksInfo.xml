@@ -22,17 +22,17 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="1524985329" Type="User" Language="SFX" Hash="{90ABF439-26CB-96F7-5921-4FC5D876B05E}">
-			<ShortName>geirangerfjord_atmosphere</ShortName>
-			<Path>geirangerfjord_atmosphere.bnk</Path>
+		<SoundBank Id="2145253833" Type="User" Language="SFX" Hash="{7EA8BC80-E949-D7DC-6D43-C8C7FAEB8799}">
+			<ShortName>atmosphere</ShortName>
+			<Path>atmosphere.bnk</Path>
 			<Media>
 				<File Id="850695978" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance.wav</ShortName>
-					<CachePath>SFX/draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance_10C4C929.wem</CachePath>
+					<CachePath>SFX/draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance_D79FB2B7.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="2646386776" Name="Play_draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" DurationType="OneShot" DurationMin="185.57733" DurationMax="185.57733">
+				<Event Id="2646386776" Name="Play_draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" MaxAttenuation="20" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="850695978"/>
 					</MediaRefs>
@@ -40,5 +40,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8B2427B0-A84D-8BE0-9D65-378DB148EEAE}</FileHash>
+	<FileHash>{EEBF9165-2B15-4E24-9B91-CC230DB3A576}</FileHash>
 </SoundBanksInfo>

@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{52222402-6660-4581-A49F-7C0D8E12EBE7}" SchemaVersion="110">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{52222402-6660-4581-A49F-7C0D8E12EBE7}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{52222402-6660-4581-A49F-7C0D8E12EBE7}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" ID="{5F51CE45-4311-49DB-AF60-0B3FD423B8D9}" ShortID="935873672">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="attenuation" ID="{489E6818-B612-4C04-89C9-8F5D0571B15D}" WorkUnitID="{09132895-6ECA-415E-B168-97217430A7F5}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6D2EEC6A-2FA1-4229-82A0-726BAD28649B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{22C9D7F1-F46F-466F-9134-DBA9E24F0926}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" ID="{EE9C09F3-95E4-44B7-9727-BE4E8C75EAA0}">
+							<Language>SFX</Language>
+							<AudioFile>draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="850695978"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" ID="{EE9C09F3-95E4-44B7-9727-BE4E8C75EAA0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>
