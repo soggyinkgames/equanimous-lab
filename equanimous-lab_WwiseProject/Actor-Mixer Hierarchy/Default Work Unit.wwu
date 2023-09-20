@@ -6,6 +6,7 @@
 				<Sound Name="draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" ID="{5F51CE45-4311-49DB-AF60-0B3FD423B8D9}" ShortID="935873672">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
@@ -33,6 +34,9 @@
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
+					<PositioningInfo>
+						<Position Name="" ID="{744296B0-C5BB-410C-AEF3-2179417BA85A}"/>
+					</PositioningInfo>
 					<ActiveSourceList>
 						<ActiveSource Name="draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance" ID="{EE9C09F3-95E4-44B7-9727-BE4E8C75EAA0}" Platform="Linked"/>
 					</ActiveSourceList>

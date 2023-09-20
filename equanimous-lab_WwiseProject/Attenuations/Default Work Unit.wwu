@@ -5,6 +5,12 @@
 			<ChildrenList>
 				<Attenuation Name="attenuation" ID="{489E6818-B612-4C04-89C9-8F5D0571B15D}" ShortID="312381504">
 					<PropertyList>
+						<Property Name="ConeOuterAngle" Type="int32" Value="160"/>
+						<Property Name="ConeUse" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 						<Property Name="RadiusMax" Type="Real64" Value="20"/>
 					</PropertyList>
 					<CurveUsageInfoList>

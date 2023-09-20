@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: ed6ceafe5907194e86426db615470715
     GuidInternal: 
-    m_lastTime: -8585068735563498492
+    m_lastTime: -8585064307827698747
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: f1d7c9226ff46f469134dba9e24f0926
     GuidInternal: 
-    m_lastTime: -8585068735565111781
+    m_lastTime: -8585064307829809264
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 1f7e54243d5c894b86e3b7ba93b61d3c
     GuidInternal: 
-    m_lastTime: -8585065550405421783
+    m_lastTime: -8585064307829381932
     List:
     - name: atmosphere
       guid: c0084a1d0369fc4eacc70c2e8f40f917
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: da936cc794b95e4f8e05109ab823734b
     GuidInternal: 
-    m_lastTime: -8585065550405225206
+    m_lastTime: -8585064307835214108
     List:
     - name: Play_draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance
       guid: 598e7fb83646a040bd35311188797c42
@@ -111,8 +111,8 @@ MonoBehaviour:
         guid: 598e7fb83646a040bd35311188797c42
       Path: Events\Default Work Unit\Play_draper_sfx_north_wales_dawn_country_lane_close_by_black_bird_song_thrush_various_songbirds_in_distance
       maxAttenuation: 20
-      maxDuration: 185.57733
-      minDuration: 185.57733
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -125,7 +125,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 2ce75f88329f1e40bedd9755c24b1f6a
     GuidInternal: 
-    m_lastTime: -8585068735564042976
+    m_lastTime: -8585064307835111419
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -139,7 +139,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: a987d027f6eb844b9039139620a995a1
     GuidInternal: 
-    m_lastTime: -8585068735564752743
+    m_lastTime: -8585064307828940974
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -153,7 +153,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: d77dd9b960a98b4a879ab13121d4eb79
     GuidInternal: 
-    m_lastTime: -8585068735564923117
+    m_lastTime: -8585064307828846641
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -167,10 +167,10 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 9d376a0ff89c4147af12f5295a7e3295
     GuidInternal: 
-    m_lastTime: -8585068735564403121
+    m_lastTime: -8585064307828836484
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 030000000400000006000000070000000a0000000b0000000c000000150000002500000026000000
+  ExpandedWaapiItemIds: 06000000070000000b0000000c0000000f00000010000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
