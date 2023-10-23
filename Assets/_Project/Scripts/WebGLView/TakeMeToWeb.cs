@@ -11,7 +11,7 @@ namespace SoggyInkGames.Equanimous.Lab.WebGLView
     {
         public string webPage = "about";
 
-        public string test = "boo";
+        // public string test = "boo";
         private Camera _mainCamera;
 
         private Renderer _renderer;
@@ -55,7 +55,7 @@ namespace SoggyInkGames.Equanimous.Lab.WebGLView
 
         public void UnityCallJSFunc()
         {
-            ToWebTesting(test);
+            // ToWebTesting(test);
             ToWebPage(webPage);
         }
 
