@@ -25,29 +25,9 @@ namespace SoggyInkGames.Equanimous.Lab.WebGLView
         [DllImport("__Internal")]
         private static extern void Alert();
 
-        // [DllImport("__Internal")]
-        // private static extern void ToWebpage();
 
         [DllImport("__Internal")]
         private static extern void ToWebPage(string webPage);
-
-        [DllImport("__Internal")]
-        private static extern void ToWebTesting(string test);
-
-        //     mergeInto(LibraryManager.library, 
-        // {
-        //     Alert: function () {
-        //         window.alert("lets do something silly!")
-        //     },
-
-        //     ToWebPage: function (pageString) {
-        //         window.location.assign("https://anai.netlify.app/" +Pointer_stringify(pageString))
-        //     },
-
-        //     ToWebTesting: function (pageString) {
-        //         window.location.assign("https://anai.netlify.app/" +UTF8ToString(pageString))
-        //     },
-        // })
 
         #endregion
 
@@ -55,7 +35,6 @@ namespace SoggyInkGames.Equanimous.Lab.WebGLView
 
         public void UnityCallJSFunc()
         {
-            // ToWebTesting(test);
             ToWebPage(webPage);
         }
 
