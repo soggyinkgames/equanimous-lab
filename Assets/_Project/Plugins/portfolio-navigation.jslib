@@ -5,7 +5,7 @@ mergeInto(LibraryManager.library,
     },
 
     ToWebPage: function (pageString) {
-        window.location.assign("https://anai.netlify.app/" +Pointer_stringify(pageString))
+        window.location.assign("https://ian-araya.netlify.app/" +Pointer_stringify(pageString))
     },
 
 })
